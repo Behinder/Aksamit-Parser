@@ -1,0 +1,17 @@
+{
+  "name": "aksamit-parser",
+  "version": "1.0.0",
+  "description": "Projekt do parsowania playlisty audycji Aksamit z Polskiego Radia",
+  "main": "app.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2",
+    "node-html-parser": "^1.2.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
