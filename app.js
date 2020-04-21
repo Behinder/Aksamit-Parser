@@ -68,6 +68,7 @@ const parsePlaylistPage = ( data ) => {
         // console.log(i+":"+artist.trim().slice(0,-1));
         output.push(piosenka);
     });
+
     return output.join("\n");
 };
 
@@ -104,6 +105,8 @@ linie.forEach((k) => {
         let ad = k;
         getPageOfGivenURL(ad,body=>{
            let data = parsePlaylistPage(body);
+           console.log("Parsujemy playlistę z url "+k);
+           fs.appendFileSync(__dirname+'/piosenki.txt','\n---'+k+'---\n');
            fs.appendFileSync(__dirname+'/piosenki.txt',data);
         });
 });
