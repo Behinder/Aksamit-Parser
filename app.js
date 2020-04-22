@@ -106,16 +106,26 @@ linie.forEach((k) => {
         getPageOfGivenURL(ad,body=>{
            let data = parsePlaylistPage(body);
            console.log("Parsujemy playlistę z url "+k);
-           fs.appendFileSync(__dirname+'/piosenki.txt','\n---'+k+'---\n');
-           fs.appendFileSync(__dirname+'/piosenki.txt',data);
+           fs.appendFileSync(__dirname+'/piosenki2.txt','\n---'+k+'---\n'+data);
         });
 });
 
-} else {
+}
+if (argumenty[0] == "-s") {
+const dane = fs.readFileSync('audycje.txt', 'UTF-8');
+  const url = argumenty[1].substring(argumenty[1].lastIndexOf("/")+1);
+  console.log(url);
+  getPageOfGivenURL(argumenty[1], body => {
+        let data = parsePlaylistPage(body);
+        fs.appendFileSync(__dirname+'/'+url+'.txt',data);
+  });
+
+}
+else {
 
     getPageOfGivenURL(argumenty[0], body => {
     let data = getLinksToAksamitfromPage(body);
-    fs.appendFileSync(__dirname+'/audycje.txt',data);
+    fs.appendFileSync(__dirname+'/niepelne.txt',data);
     });
 
 }
